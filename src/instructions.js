@@ -12,8 +12,8 @@
 //  prior written permission.
 
 import $ from 'jquery';
-import { NodeTypeError, OutOfRangeError, TerminusError } from './errors';
-import { applyBlacklist, matchesLocalNameOrElement } from './util';
+import {NodeTypeError, OutOfRangeError, TerminusError} from './errors';
+import {applyBlacklist, matchesLocalNameOrElement} from './util';
 
 // Description: This model contains the implementation for "instructions" included in the
 //   EPUB CFI domain specific language (DSL).
@@ -55,11 +55,10 @@ function elementNodeStep(CFIStepValue, $currNode, classBlacklist, elementBlackli
 //   are part of the target text node.
 export function injectCFIMarkerIntoText($textNodeList, textOffset, elementToInject) {
   const $textNodeListToMutate = $textNodeList;
-  const { ownerDocument } = $textNodeList[0];
+  const {ownerDocument} = $textNodeList[0];
 
   let currTextPosition = 0;
-  // The iteration counter may be incorrect here (should be $textNodeList.length - 1 ??)
-  for (let nodeNum = 0; nodeNum <= $textNodeList.length; nodeNum += 1) {
+  for (let nodeNum = 0; nodeNum < $textNodeList.length; nodeNum += 1) {
     if ($textNodeList[nodeNum].nodeType === Node.TEXT_NODE) {
       let $injectedNode;
       const currNodeMaxIndex = $textNodeList[nodeNum].nodeValue.length + currTextPosition;
@@ -232,7 +231,7 @@ export function followIndexStep(
 
 // Rationale: Compatibility.
 //   `followIndexStep` used to be named `getNextNode`
-export { followIndexStep as getNextNode };
+export {followIndexStep as getNextNode};
 
 // Description: This instruction executes an indirection step, where a resource is retrieved using a
 //   link contained on a attribute of the target element.
@@ -317,4 +316,4 @@ export function targetIdMatchesIdAssertion($foundNode, idAssertion) {
 
 // Rationale: Compatibility.
 //   `applyBlacklist` used to be exported by this module
-export { applyBlacklist };
+export {applyBlacklist};

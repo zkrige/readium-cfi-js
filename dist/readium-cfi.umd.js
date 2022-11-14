@@ -11503,8 +11503,7 @@
 
 
 	  var currTextPosition = 0;
-	  // The iteration counter may be incorrect here (should be $textNodeList.length - 1 ??)
-	  for (var nodeNum = 0; nodeNum <= $textNodeList.length; nodeNum += 1) {
+	  for (var nodeNum = 0; nodeNum < $textNodeList.length; nodeNum += 1) {
 	    if ($textNodeList[nodeNum].nodeType === Node.TEXT_NODE) {
 	      var $injectedNode = void 0;
 	      var currNodeMaxIndex = $textNodeList[nodeNum].nodeValue.length + currTextPosition;
